@@ -1,21 +1,23 @@
-// Fetch random dog images
-export async function fetchRandomDogs() {
+const apiKey = '1';  
+const apiBaseURL = 'https://www.themealdb.com/api/json/v1/';
+
+export async function fetchRecipesByIngredient(ingredient) {
     try {
-        const response = await fetch('https://dog.ceo/api/breeds/image/random/6');
+        const response = await fetch(`${apiBaseURL}${apiKey}/filter.php?i=${ingredient}`);
         const data = await response.json();
-        return data.message; // Array of image URLs
+        return data.meals;  // Array of recipes
     } catch (error) {
-        console.error('Error fetching random dog images:', error);
+        console.error('Error fetching recipes:', error);
     }
 }
 
-// Fetch dogs by breed
-export async function fetchDogsByBreed(breed) {
+export async function fetchRecipeDetails(id) {
     try {
-        const response = await fetch(`https://dog.ceo/api/breed/${breed}/images/random/6`);
+        const response = await fetch(`${apiBaseURL}${apiKey}/lookup.php?i=${id}`);
         const data = await response.json();
-        return data.message; // Array of breed-specific image URLs
+        return data.meals[0];  // Recipe details
     } catch (error) {
-        console.error('Error fetching breed images:', error);
+        console.error('Error fetching recipe details:', error);
     }
 }
+
