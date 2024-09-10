@@ -1,35 +1,24 @@
-import { fetchRandomDogs, fetchDogsByBreed } from './api.js';
-import { displayDogImages, addBreedToFavorites } from './dom.js';
+import { fetchRecipesByIngredient } from './api.js';
+import { displayRecipes, addRecipeToFavorites } from './dom.js';
 
-// Initial random dogs fetch
-async function loadRandomDogs() {
-    const images = await fetchRandomDogs();
-    displayDogImages(images);
-}
-
-// Handle breed search
-async function handleBreedSearch(e) {
+// Handle ingredient search
+async function handleSearch(e) {
     e.preventDefault();
-    const breedInput = document.getElementById('breed-input');
-    const breed = breedInput.value.trim().toLowerCase();
+    const ingredientInput = document.getElementById('ingredient-input');
+    const ingredient = ingredientInput.value.trim();
 
-    if (!breed) return;
+    if (!ingredient) return;
 
-    const breedImages = await fetchDogsByBreed(breed);
-    if (breedImages) {
-        displayDogImages(breedImages);
-        addBreedToFavorites(breed); // Add to favorites list
+    const recipes = await fetchRecipesByIngredient(ingredient);
+    if (recipes) {
+        displayRecipes(recipes);  // Display the recipes in the gallery
     } else {
-        alert('Breed not found!');
+        alert('No recipes found for this ingredient!');
     }
 
-    breedInput.value = '';
+    ingredientInput.value = '';
 }
 
-// Event listener for the breed search form
-const breedSearchForm = document.getElementById('breed-search-form');
-breedSearchForm.addEventListener('submit', handleBreedSearch);
-
-// Load random dogs on page load
-loadRandomDogs();
-
+// Event listener for the search form
+const searchForm = document.getElementById('search-form');
+searchForm.addEventListener('submit', handleSearch);
