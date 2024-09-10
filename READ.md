@@ -1,18 +1,20 @@
-# Dog Gallery App
+// Recipe Finder App
 
-This is a simple web application that displays random dog images from the Dog API. Users can search for specific dog breeds and add their favorite breeds to a list. The app makes use of the fetch API for asynchronous requests and organizes the code using modules.
+This is a web application that allows users to search for recipes by ingredient and add favorite recipes to a list. It interacts with TheMealDB API to fetch recipe data. Users can search by ingredient, view recipes, and manage their favorite recipes.
 
-## Features
-- Fetch and display random dog images
-- Search for images by breed
-- Add breeds to favorites list
-- Responsive design
+//Features
+- Search for recipes by ingredient
+- View recipes and images
+- Add recipes to favorites
 
-## Technologies
+// Technology
 - HTML, CSS, JavaScript
 - Fetch API
 - Modules
 
-## How to Run
-1. Clone this repository.
-2. Open `index.html` in your browser.
+// The way it works
+ Open `index.html` in your browser.
+
+// The Api I used
+- TheMealDB: https://www.themealdb.com/api.php
+
